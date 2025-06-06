@@ -2,6 +2,8 @@
 
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
 public class Menstruation {
 
@@ -19,7 +21,27 @@ public class Menstruation {
 	this.currentPeriodDate = currentPreiodDate;
 	}
 	
+	public String getName() {
+		 return name;
+	}
 	
+	
+	public void showMenstrualCycle() {
+	int periodCycle = 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
 
 
 
