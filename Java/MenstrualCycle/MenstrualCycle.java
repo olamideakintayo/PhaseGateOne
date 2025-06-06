@@ -130,5 +130,22 @@ public class Menstruation {
 			return;
 		}
 		
-		System.out.print("Please Enter 
+		System.out.print("Please Enter the user name to update Menstrual Summary: ");
+		input.nextLine();
+		String indexName = input.nextLine().trim();
+		
+		MenstruationCycle foundUser = null;
+		for(MenstruationCycle user : cycleDetails) {
+			if(user.getName().equalsIgnoreCase(indexName)) {
+			foundUser = user;
+			break;
+		}
+		}
+		
+		if (foundUser == null) {
+			System.out.println("User not found");
+			return;
+		}
+		
+		
  }
