@@ -111,5 +111,24 @@ public class Menstruation {
             System.out.println("Invalid input for period duration. Please enter a valid number.");
         }
     }
-
+	
+	public static void viewMenstrualSummary() {
+		if (cycleDetails.isEmpty()) {
+			System.out.println("There are no Menstrual Records available.");
+			return;
+		}
+		
+		for (int i = 0; i < cycleDetails.size(); i++) {
+			System.out.println("\nUser " + (i + 1));
+			cycleDetails.get(i).showMenstrualCycle();
+			}
+			}
+			
+	public static void updateMenstruationCycle() {
+		if (cycleDetails.isEmpty()) {
+			System.out.println("There are no user records to update: ");
+			return;
+		}
+		
+		System.out.print("Please Enter 
  }
