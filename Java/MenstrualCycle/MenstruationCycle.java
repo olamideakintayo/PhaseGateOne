@@ -20,11 +20,10 @@ public class MenstruationCycle {
         this.periodDurationDays = periodDurationDays;
     }
 
-	public String getName() {
-		return name;
-		}
-		
-		
+    public String getName() {
+        return name;
+    }
+    
     public void showMenstrualCycle() {
         long periodCycleLength = ChronoUnit.DAYS.between(previousPeriodDate, currentPeriodDate);
 
@@ -92,85 +91,118 @@ public class MenstruationCycle {
             if (!duplicateName) break;
         }
 
-        try {
-            System.out.print("Enter your previous period date (YYYY-MM-DD): ");
-            LocalDate previousPeriodDate = LocalDate.parse(input.nextLine());
+        LocalDate previousPeriodDate = null;
+        LocalDate currentPeriodDate = null;
+        int periodDurationDays = 0;
 
-            System.out.print("Enter your current period date (YYYY-MM-DD): ");
-            LocalDate currentPeriodDate = LocalDate.parse(input.nextLine());
-
-            if (currentPeriodDate.isBefore(previousPeriodDate)) {
-                System.out.println("Error: Current date must be after the previous date.");
-                return;
+        while (true) {
+            try {
+                System.out.print("Enter your previous period date (YYYY-MM-DD): ");
+                previousPeriodDate = LocalDate.parse(input.nextLine());
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use YYYY-MM-DD.");
             }
+        }
 
-            System.out.print("Enter your typical period duration (in days): ");
-            int periodDurationDays = Integer.parseInt(input.nextLine());
+        while (true) {
+            try {
+                System.out.print("Enter your current period date (YYYY-MM-DD): ");
+                currentPeriodDate = LocalDate.parse(input.nextLine());
 
-            cycleDetails.add(new MenstruationCycle(name, previousPeriodDate, currentPeriodDate, periodDurationDays));
-            System.out.println("Your details are currently being analyzed!! Please check on the View Menstruation Summary Section to view the summary of your Cycle.");
+                if (currentPeriodDate.isBefore(previousPeriodDate)) {
+                    System.out.println("Error: Current date must be after the previous date.");
+                    continue;
+                }
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+            }
+        }
 
-        } catch (DateTimeParseException e) {
-            System.out.println("Invalid date format. Please use YYYY-MM-DD.");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input for period duration. Please enter a valid number.");
+        while (true) {
+            try {
+                System.out.print("Enter your typical period duration (in days): ");
+                periodDurationDays = Integer.parseInt(input.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input for period duration. Please enter a valid number.");
+            }
+        }
+
+        cycleDetails.add(new MenstruationCycle(name, previousPeriodDate, currentPeriodDate, periodDurationDays));
+        System.out.println("Your details are currently being analyzed!! Please check on the View Menstruation Summary Section to view the summary of your Cycle.");
+    }
+    
+    public static void viewMenstrualSummary() {
+        if (cycleDetails.isEmpty()) {
+            System.out.println("There are no Menstrual Records available.");
+            return;
+        }
+        
+        for (int i = 0; i < cycleDetails.size(); i++) {
+            System.out.println("\nUser " + (i + 1));
+            cycleDetails.get(i).showMenstrualCycle();
         }
     }
-	
-	public static void viewMenstrualSummary() {
-		if (cycleDetails.isEmpty()) {
-			System.out.println("There are no Menstrual Records available.");
-			return;
-		}
-		
-		for (int i = 0; i < cycleDetails.size(); i++) {
-			System.out.println("\nUser " + (i + 1));
-			cycleDetails.get(i).showMenstrualCycle();
-			}
-			}
-			
-	public static void updateMenstruationCycle() {
-		if (cycleDetails.isEmpty()) {
-			System.out.println("There are no user records to update: ");
-			return;
-		}
-		
-		System.out.print("Please Enter the user name to update Menstrual Summary: ");
-		String indexName = input.nextLine().trim();
-		
-		MenstruationCycle foundUser = null;
-		for(MenstruationCycle user : cycleDetails) {
-			if(user.getName().equalsIgnoreCase(indexName)) {
-			foundUser = user;
-			break;
-		}
-		}
-		
-		if (foundUser == null) {
-			System.out.println("User not found");
-			return;
-		}
-		
-		
-		try {
-		System.out.print("Enter the new previous period date (YYYY-MM-DD): ");
-		foundUser.previousPeriodDate = LocalDate.parse(input.nextLine());
-		
-		System.out.print("Enter the new current period date (YYYY-MM-DD): ");
-		foundUser.currentPeriodDate = LocalDate.parse(input.nextLine());
-		
-		System.out.print("Enter the new typical period duration (in days): ");
-		foundUser.periodDurationDays = Integer.parseInt(input.nextLine());
-		
-		
-		System.out.println("The User Menstrual Summary has been updated!!");
-	}
-	
-	catch (DateTimeParseException e) {
-        System.out.println("Invalid date format. Please use YYYY-MM-DD.");
-    } 
-    catch (NumberFormatException e) {
-        System.out.println("Invalid input for period duration. Please enter a valid number.");
-    }	
-}	
- }
+        
+    public static void updateMenstruationCycle() {
+        if (cycleDetails.isEmpty()) {
+            System.out.println("There are no user records to update.");
+            return;
+        }
+        
+        System.out.print("Please Enter the user name to update Menstrual Summary: ");
+        String indexName = input.nextLine().trim();
+        
+        MenstruationCycle foundUser = null;
+        for(MenstruationCycle user : cycleDetails) {
+            if(user.getName().equalsIgnoreCase(indexName)) {
+                foundUser = user;
+                break;
+            }
+        }
+        
+        if (foundUser == null) {
+            System.out.println("User not found");
+            return;
+        }
+        
+        while (true) {
+            try {
+                System.out.print("Enter the new previous period date (YYYY-MM-DD): ");
+                foundUser.previousPeriodDate = LocalDate.parse(input.nextLine());
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+            }
+        }
+        
+        while (true) {
+            try {
+                System.out.print("Enter the new current period date (YYYY-MM-DD): ");
+                LocalDate newCurrentDate = LocalDate.parse(input.nextLine());
+                if (newCurrentDate.isBefore(foundUser.previousPeriodDate)) {
+                    System.out.println("Error: Current date must be after the previous date.");
+                    continue;
+                }
+                foundUser.currentPeriodDate = newCurrentDate;
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+            }
+        }
+        
+        while (true) {
+            try {
+                System.out.print("Enter the new typical period duration (in days): ");
+                foundUser.periodDurationDays = Integer.parseInt(input.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input for period duration. Please enter a valid number.");
+            }
+        }
+        
+        System.out.println("The User Menstrual Summary has been updated!!");
+    }
+}
