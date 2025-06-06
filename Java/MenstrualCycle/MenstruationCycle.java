@@ -151,6 +151,8 @@ public class MenstruationCycle {
 			return;
 		}
 		
+		
+		try {
 		System.out.print("Enter the new previous period date (YYYY-MM-DD): ");
 		foundUser.previousPeriodDate = LocalDate.parse(input.nextLine());
 		
@@ -164,5 +166,11 @@ public class MenstruationCycle {
 		System.out.println("The User Menstrual Summary has been updated!!");
 	}
 	
-		
+	catch (DateTimeParseException e) {
+        System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+    } 
+    catch (NumberFormatException e) {
+        System.out.println("Invalid input for period duration. Please enter a valid number.");
+    }	
+}	
  }
