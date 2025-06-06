@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
 public class Menstruation {
     static Scanner input = new Scanner(System.in);
-    static ArrayList<MenstruationCycle> cycleDetails = new ArrayList<>();
+    static ArrayList<Menstruation> cycleDetails = new ArrayList<>();
 
     String name;
     LocalDate previousPeriodDate;
@@ -13,16 +14,16 @@ public class Menstruation {
     int periodDurationDays;
 
     public Menstruation(String name, LocalDate previousPeriodDate, LocalDate currentPeriodDate, int periodDurationDays) {
-    this.name = name;
-    this.previousPeriodDate = previousPeriodDate;
-    this.currentPeriodDate = currentPeriodDate;
-    this.periodDurationDays = periodDurationDays;
-}
+        this.name = name;
+        this.previousPeriodDate = previousPeriodDate;
+        this.currentPeriodDate = currentPeriodDate;
+        this.periodDurationDays = periodDurationDays;
+    }
+
     public void showMenstrualCycle() {
         long periodCycleLength = ChronoUnit.DAYS.between(previousPeriodDate, currentPeriodDate);
 
         LocalDate ovulationDate = currentPeriodDate.plusDays(periodCycleLength - 14);
-
         LocalDate fertileWindowStart = ovulationDate.minusDays(5);
         LocalDate fertileWindowEnd = ovulationDate.plusDays(1);
 
@@ -46,10 +47,10 @@ public class Menstruation {
 
         if (periodCycleLength >= 21 && periodCycleLength <= 35) {
             System.out.println("Your Period Cycle is within the normal range (21-35 days).");
+            System.out.println("Here is your next 5 predicted period dates for the next 5 months:");
 
             LocalDate nextPeriodDate = currentPeriodDate;
             for (int i = 1; i <= 5; i++) {
-            	System.out.println("Here is your next 5 predicted period for the next 5 months");
                 System.out.println("Period " + i + ": " + nextPeriodDate);
                 nextPeriodDate = nextPeriodDate.plusDays(periodCycleLength);
             }
@@ -59,35 +60,34 @@ public class Menstruation {
 
         System.out.println("Your Ovulation date is: " + ovulationDate);
         System.out.println("Your Fertility Window (full): " + fertileWindowStart + " to " + fertileWindowEnd);
-        System.out.println("Peak Fertility Days (most fertile): " + peakFertileStart + " to " + peakFertileEnd);
+        System.out.println("Peak Fertility Days (most fertile): " + peakFertilePeriodStart + " to " + peakFertilePeriodEnd);
         System.out.println("Your Safe period before the start of your Fertile Window is: " + safePeriodStart1 + " to " + safePeriodEnd1);
         System.out.println("Your Safe period after the end of your Fertile Window is: " + safePeriodStart2 + " to " + safePeriodEnd2);
-        System.out.println("PMS days is likely to begin between: " + pmsStart + " to " + pmsEnd);
+        System.out.println("PMS days are likely to begin between: " + pmsStart + " to " + pmsEnd);
         System.out.println("Your period will likely last: " + currentPeriodDate + " to " + periodEndDate);
         System.out.println("Your Estimated period duration is: " + periodDurationDays + " days");
     }
-    
+
     public static void addUserDetails() {
-    
-    String name;
-    
-    while (true) {
-    		System.out.print("Please Enter your Name: ");
-    		name = input.nextLine().trim();
-    		
-    		boolean duplicatedName = false;
-    		for (MenstruationCycle userMentruation : cycleDetails) {
-    		if (userMensatruation.getName().equalsIgnoreCase(name)) {
-    			System.out.println("Error: User with the name '" + name "' already exists. Please enter a different name.");
-    			duplicate = true;
-    			break;
-    			}
-    			}
-    			
-    			if (!duplicateName) break;
-    			}
-    			
-    	try {
+        String name;
+
+        while (true) {
+            System.out.print("Please Enter your Name: ");
+            name = input.nextLine().trim();
+
+            boolean duplicateName = false;
+            for (Menstruation user : cycleDetails) {
+                if (user.name.equalsIgnoreCase(name)) {
+                    System.out.println("Error: User with the name '" + name + "' already exists. Please enter a different name.");
+                    duplicateName = true;
+                    break;
+                }
+            }
+
+            if (!duplicateName) break;
+        }
+
+        try {
             System.out.print("Enter your previous period date (YYYY-MM-DD): ");
             LocalDate previousPeriodDate = LocalDate.parse(input.nextLine());
 
@@ -101,13 +101,15 @@ public class Menstruation {
 
             System.out.print("Enter your typical period duration (in days): ");
             int periodDurationDays = Integer.parseInt(input.nextLine());
+
+            cycleDetails.add(new Menstruation(name, previousPeriodDate, currentPeriodDate, periodDurationDays));
+            System.out.println("Your details are currently being analyzed!! Please check on the View Menstruation Summary Section to view the summary of your Cycle.");
+
         } catch (DateTimeParseException e) {
             System.out.println("Invalid date format. Please use YYYY-MM-DD.");
         } catch (NumberFormatException e) {
             System.out.println("Invalid input for period duration. Please enter a valid number.");
-            
         }
-        userDetails.add(new MensatruationCycle(name, previousPeriodDate, currentPeriodDate, periodDurationDays));
-        System.out.println("Your details are currently being analyzed!! Please check on the View Menstruation Summary Section to view the summary of your Cycle") 
-        }
-        }
+    }
+
+ }
