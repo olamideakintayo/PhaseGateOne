@@ -136,7 +136,6 @@ public class MenstruationCycle {
 		}
 		
 		System.out.print("Please Enter the user name to update Menstrual Summary: ");
-		input.nextLine();
 		String indexName = input.nextLine().trim();
 		
 		MenstruationCycle foundUser = null;
