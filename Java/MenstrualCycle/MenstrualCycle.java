@@ -18,7 +18,7 @@ public class Menstruation {
     this.currentPeriodDate = currentPeriodDate;
     this.periodDurationDays = periodDurationDays;
 }
-    public void showMenstrualCycle(int periodDurationDays) {
+    public void showMenstrualCycle() {
         long periodCycleLength = ChronoUnit.DAYS.between(previousPeriodDate, currentPeriodDate);
 
         LocalDate ovulationDate = currentPeriodDate.plusDays(periodCycleLength - 14);
@@ -49,6 +49,7 @@ public class Menstruation {
 
             LocalDate nextPeriodDate = currentPeriodDate;
             for (int i = 1; i <= 5; i++) {
+            	System.out.println("Here is your next 5 predicted period for the next 5 months");
                 System.out.println("Period " + i + ": " + nextPeriodDate);
                 nextPeriodDate = nextPeriodDate.plusDays(periodCycleLength);
             }
