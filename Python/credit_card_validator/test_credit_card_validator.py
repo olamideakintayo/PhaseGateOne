@@ -46,4 +46,10 @@ class TestCreditCardValidator(TestCase):
 		self.assertEqual(result["issuer"], "American Express")
 		self.assertEqual(result["reason"], "Passed Luhn check")
 		
+	def test_that_checks_for_a_valid_discover_card(self):
+		credit_card_number = "6011111111111117"
+		result = credit_card_validation(credit_card_number)
 		
+		self.assertTrue(result["valid"])
+		self.assertEqual(result["issuer"], "Discover")
+		self.assertEqual(result["reason"], "Passed Luhn check")
