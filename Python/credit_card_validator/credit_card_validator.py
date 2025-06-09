@@ -14,7 +14,7 @@ def luhn_check(numbers):
 
     return sum_ % 10 == 0
 
-def atm_number_validation(numbers):
+def credit_card_validation(numbers):
     length = len(numbers)
 
     if length < 13 or length > 16:
@@ -53,7 +53,7 @@ def main():
         print("Invalid input. Please enter digits only.")
         return
 
-    result = atm_number_validation(user_input)
+    result = credit_card_validation(user_input)
 
     print("\n*************************************")
     print(f"**Credit Card Type : {result.get('issuer', 'Unknown')}")
