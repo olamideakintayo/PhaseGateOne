@@ -26,3 +26,6 @@ class TestCreditCardValidator(TestCase):
 		
 	def test_that_checks_if_the_credit_card_number_passes_the_luhn_check(self):
 		self.assertTrue(luhn_check("4539148803436467"))
+		
+	def test_that_checks_if_the_credit_card_fails_the_luhn_check(self):
+		self.assertFalse(luhn_check("4539144803436461"))
