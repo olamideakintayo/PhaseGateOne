@@ -29,3 +29,11 @@ class TestCreditCardValidator(TestCase):
 		
 	def test_that_checks_if_the_credit_card_fails_the_luhn_check(self):
 		self.assertFalse(luhn_check("4539144803436461"))
+		
+	def test_that_checks_for_a_valid_mastercard_card(self):
+		credit_card_number = "5555555555554444" 
+		result = credit_card_validation(credit_card_number)
+		
+		self.assertTrue(result["valid"])
+		self.assertEqual(result["issuer"], "MasterCard")
+		self.assertEqual(result["reason"], "Passed Luhn check")
