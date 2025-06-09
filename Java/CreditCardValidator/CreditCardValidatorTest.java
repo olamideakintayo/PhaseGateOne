@@ -29,4 +29,14 @@ public class CreditCardValidatorTest {
     
     assertTrue(result);
     }
+    
+    @Test
+    void testThatChecksIfTheCreditCardEnteredFailsTheLuhnCheckIfItIsIncorrect() {
+    String creditCardNumber = "4539144803436461";
+    boolean result = CreditCardValidator.luhnCheck(creditCardNumber);
+    
+    assertFalse(result);
+    }
+    
+    
 }
