@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')(); 
 
 class CreditCardValidator {
-    static AtmNumberValidation(cardNumbers) {
+    static CreditCardValidation(cardNumbers) {
         if (!Array.isArray(cardNumbers)) {
             return { valid: false, reason: "Input must be an array" };
         }
@@ -69,7 +69,7 @@ function main() {
     }
 
     const cardNumberArray = userInput.split('').map(Number);
-    const result = CreditCardValidator.AtmNumberValidation(cardNumberArray);
+    const result = CreditCardValidator.CreditCardValidation(cardNumberArray);
 
     console.log("\n*************************************");
     console.log(`**Credit Card Type : ${result.issuer || "Unknown"}`);
