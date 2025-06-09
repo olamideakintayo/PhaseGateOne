@@ -21,4 +21,12 @@ public class CreditCardValidatorTest {
     String creditCardNumber = "1234567890123456";
     String result = CreditCardValidator.creditCardValidation(creditCardNumber);
     }
+    
+    @Test
+    void testThatChecksIfTheCreditCardEnteredPassesTheLuhnCheck() {
+    String creditCardNumber  = "4539148803436467";
+    boolean result = CreditCardValidator.luhnCheck(creditCardNumber);
+    
+    assertTrue(result);
+    }
 }
