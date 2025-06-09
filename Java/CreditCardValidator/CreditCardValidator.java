@@ -1,6 +1,6 @@
 public class CreditCardValidator {
 
-    public static String validateCard(String numbers) {
+    public static String creditCardValidation(String numbers) {
         int length = numbers.length();
 
         if (length < 13 || length > 16) {
