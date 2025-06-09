@@ -23,3 +23,6 @@ class TestCreditCardValidator(TestCase):
 		
 		self.assertFalse(result["valid"])
 		self.assertEqual(result["reason"], "Invalid issuer or length")
+		
+	def test_that_checks_if_the_credit_card_number_passes_the_luhn_check(self):
+		self.assertTrue(luhn_check("4539148803436467"))
