@@ -49,4 +49,16 @@ public class CreditCardValidatorTest {
         assertTrue(result.contains("Digit Length : " + creditCardNumber.length()));
     }
     
+    @Test
+    void testThatChecksForAValidAmericanExpressCard() {
+        String creditCardNumber = "378282246310005";  
+        String result = CreditCardValidator.creditCardValidation(creditCardNumber);
+
+        assertTrue(result.contains("American Express"));
+        assertTrue(result.contains("Valid"));
+        assertTrue(result.contains(creditCardNumber));
+        assertTrue(result.contains("Digit Length : " + creditCardNumber.length()));
+    }
+ 
+    
 }
