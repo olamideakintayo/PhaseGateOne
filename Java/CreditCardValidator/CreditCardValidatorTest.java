@@ -59,6 +59,15 @@ public class CreditCardValidatorTest {
         assertTrue(result.contains(creditCardNumber));
         assertTrue(result.contains("Digit Length : " + creditCardNumber.length()));
     }
- 
-    
+ 	
+ 	@Test
+    void testThatChecksForAValidDiscoverCard() {
+        String creditCardNumber = "6011111111111117";  
+        String result = CreditCardValidator.creditCardValidation(creditCardNumber);
+
+        assertTrue(result.contains("Discover"));
+        assertTrue(result.contains("Valid"));
+        assertTrue(result.contains(creditCardNumber));
+        assertTrue(result.contains("Digit Length : " + creditCardNumber.length()));
+    }
 }
