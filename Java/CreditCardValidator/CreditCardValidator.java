@@ -38,7 +38,7 @@ public class CreditCardValidator {
         );
     }
 
-    private static boolean luhnCheck(String numbers) {
+    public static boolean luhnCheck(String numbers) {
         int sum = 0;
         boolean doubleDigit = false;
 
