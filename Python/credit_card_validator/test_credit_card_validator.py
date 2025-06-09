@@ -13,3 +13,13 @@ class TestCreditCardValidator(TestCase):
 		
 		
 		self.assertTrue(result["valid"])
+		self.assertEqual(result["issuer"], "Visa")
+		self.assertEqual(result["reason"], "Passed Luhn check")
+		
+		
+	def test_that_checks_for_invalid_credit_card_number(self):
+		credit_card_number = "1234567890123456"
+		result = credit_card_validation(credit_card_number)
+		
+		self.assertFalse(result["valid"])
+		self.assertEqual(result["reason"], "Invalid issuer or length")
