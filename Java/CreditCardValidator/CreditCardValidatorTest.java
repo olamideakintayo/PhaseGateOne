@@ -38,5 +38,15 @@ public class CreditCardValidatorTest {
     assertFalse(result);
     }
     
+    @Test
+    void testThatChecksForAValidMasterCard() {
+        String creditCardNumber = "5555555555554444";  
+        String result = CreditCardValidator.creditCardValidation(creditCardNumber);
+
+        assertTrue(result.contains("MasterCard"));
+        assertTrue(result.contains("Valid"));
+        assertTrue(result.contains(creditCardNumber));
+        assertTrue(result.contains("Digit Length : " + creditCardNumber.length()));
+    }
     
 }
