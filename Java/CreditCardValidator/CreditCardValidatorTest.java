@@ -15,4 +15,10 @@ public class CreditCardValidatorTest {
         assertTrue(result.contains(creditCardNumber));
         assertTrue(result.contains("Digit Length : " + creditCardNumber.length()));
     }
+    
+    @Test
+    void testThatCheckForInvalidCreditCardNumber() {
+    String creditCardNumber = "1234567890123456";
+    String result = CreditCardValidator.creditCardValidation(creditCardNumber);
+    }
 }
