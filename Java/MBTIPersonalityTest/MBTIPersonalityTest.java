@@ -36,9 +36,21 @@ public class MBTIPersonalityTest {
     	System.out.print("Please Neter your name for your Personality Test: ");
     	String userName = input.nextLine();
     	
-    	for(i = 0; i < personalityQuestions.Lenght; i++) {
-    		System.out.println("\n" + (i + 1) + ". " + questions[i][0]);
-    		Sys
+    	for(int i = 0; i < personalityQuestions.length; i++) {
+    		System.out.println("\n" + (i + 1) + ". " + personalityQuestions[i][0]);
+    		System.out.println("A. " + personalityQuestions[i][1]);
+    		System.out.println("B. " + personalityQuestions[1][2]);
+    		char userQuestionAnswer;
+    		
+    		while(true) {
+    		System.out.print("Enter your answer (A/B): ");
+    		userQuestionAnswer = input.next().toUpperCase().charAt(0);
+    		if(userQuestionAnswer == 'A' || userQuestionAnswer == 'B') break;
+    		else{
+    		System.out.println("Invalid Input. Please Enter only A or B from the Options.");
+    		}
+    		userResponses[i] = userQuestionAnswer;
     	}
+    }
     }
 }
