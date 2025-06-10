@@ -50,6 +50,12 @@ public class MBTIPersonalityTest {
     		System.out.println("Invalid Input. Please Enter only A or B from the Options.");
     		}
     		userResponses[i] = userQuestionAnswer;
+    		switch (personalityQuestions[i][3]) {
+    			case "EI" -> ei +=  (userQuestionAnswer == 'A') ? 1 : 0;
+    			case "SN" -> sn += (userQuestionAnswer == 'A') ? 1 : 0;
+                case "TF" -> tf += (userQuestionAnswer == 'A') ? 1 : 0;
+                case "JP" -> jp += (userQuestionAnswer == 'A') ? 1 : 0;
+            }
     	}
     }
     }
