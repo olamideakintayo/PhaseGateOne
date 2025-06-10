@@ -24,5 +24,21 @@ public class MBTIPersonalityTest {
         {"Are you:", "matter of fact, issue-oriented", "sensitive, people-oriented, compassionate", "TF"},
         {"Do you prefer to:", "control, govern", "latitude, freedom", "JP"}
     };
-
+    
+    public static void runPersonalityTest() {
+    	Scanner input = new Scanner(System.in);
+    	int ei = 0;
+    	int sn = 0;
+    	int tf = 0;
+    	int jp = 0;
+    	
+    	char[] userResponses = new char[20];
+    	System.out.print("Please Neter your name for your Personality Test: ");
+    	String userName = input.nextLine();
+    	
+    	for(i = 0; i < personalityQuestions.Lenght; i++) {
+    		System.out.println("\n" + (i + 1) + ". " + questions[i][0]);
+    		Sys
+    	}
     }
+}
