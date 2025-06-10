@@ -57,6 +57,37 @@ public class MBTIPersonalityTest {
                 case "JP" -> jp += (userQuestionAnswer == 'A') ? 1 : 0;
             }
     	}
+    	
+    	System.out.println("\nHello " + userName + ", you selected:\n");
+
+for (int questionsBatch = 0; questionsBatch < 4; questionsBatch++) {
+    int countA = 0;
+    int countB = 0;
+
+    for (int questionInBatch = 0; questionInBatch < 5; questionInBatch++) {
+        int questionIndex = questionsBatch * 5 + questionInBatch;
+        char selection = userResponses[questionIndex];
+
+        String selectedAnswerDescription = (selection == 'A') ? personalityQuestions[questionIndex][1] : personalityQuestions[questionIndex][2];
+
+        System.out.println("[" + selection + "] " + selectedAnswerDescription);
+
+        if (selection == 'A') countA++;
+        else countB++;
     }
+
+    System.out.println("Number of A: " + countA + ", Number of B: " + countB + "\n");
+}
+
+	  String personalityType = ""
+          + (ei >= 3 ? "E" : "I")
+          + (sn >= 3 ? "S" : "N")
+          + (tf >= 3 ? "T" : "F")
+          + (jp >= 3 ? "J" : "P");
+
+        System.out.println("Your MBTI personality type is: " + personalityType + "\n");
+        showPersonalityDescription(personalityType);
+    }
+
     }
 }
