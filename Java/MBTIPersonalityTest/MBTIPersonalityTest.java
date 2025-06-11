@@ -25,10 +25,7 @@ public class MBTIPersonalityTest {
         {"Do you prefer to:", "control, govern", "latitude, freedom", "JP"}
     };
 
-    public static void main(String[] args) {
-        runPersonalityTest();
-    }
-
+ 
     public static void runPersonalityTest() {
         Scanner input = new Scanner(System.in);
         int ei = 0;
