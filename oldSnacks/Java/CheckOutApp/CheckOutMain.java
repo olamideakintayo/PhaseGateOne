@@ -9,11 +9,10 @@ public class MainApp {
 
         CheckOut.addToCart();
 
-         for (CheckOut item : CheckOut.shoppingCart) {
-            item.showInvoice();
-            item.showReceipt();
-        }
-
+         CheckOut anyItem = CheckOut.shoppingCart.get(0);
+         anyItem.showInvoice();
+         
+         anyItem.showReceipt();
        }
 }
 
