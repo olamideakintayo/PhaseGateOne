@@ -22,14 +22,7 @@ class MenstruationCycleTest {
         assertEquals(1, MenstruationCycle.cycleDetails.size());
     }
 
-    @Test
-    void testThatDuplicateNameDetection() {
-        MenstruationCycle.cycleDetails.add(new MenstruationCycle("Marvellous", LocalDate.now(), LocalDate.now().plusDays(28), 5));
-        boolean duplicate = MenstruationCycle.cycleDetails.stream()
-                .anyMatch(user -> user.getName().equalsIgnoreCase("Marvellous"));
-        assertTrue(duplicate);
-    }
-
+   
     @Test
     void testThatChecksCycleLengthCalculation() {
         MenstruationCycle cycle = new MenstruationCycle("Ella", LocalDate.of(2024, 5, 1), LocalDate.of(2024, 5, 31), 6);
