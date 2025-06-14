@@ -99,6 +99,10 @@ class CheckOut {
     System.out.println("What is the customer's name: ");
     customerName = input.nextLine().trim();
 
+	ArrayList<CheckOut> cartPerItems = new ArrayList<>();
+	String cashierName = "";
+    double discountRate = 0;
+    
     while (true) {
         String userBuy;
         System.out.println("What did the user buy ?");
@@ -132,21 +136,19 @@ class CheckOut {
          System.out.println("Add more items ?");
         String addMoreItems = input.nextLine().toLowerCase();
 
+	cartPerItems.add(new CheckOut(customerName, userBuy, itemPieces, pricePerUnit, "", 0));
+	
 	if (addMoreItems.equals("yes")) {
-	 shoppingCart.add(new CheckOut(customerName, userBuy, itemPieces, pricePerUnit, "", 0));
 	 continue;
 	 }
 	 
 	 else if( addMoreItems.equals("no")) {
-	 
-        String cashierName;
-
         System.out.println("What is your name ?");
         cashierName = input.nextLine().trim();
 
-        double discountRate;
+   
         while (true) {
-            System.out.print("How much discount will he get?");
+            System.out.println("How much discount will he get?");
             discountRate = input.nextDouble();
 
             if (discountRate >= 1) {
@@ -163,6 +165,10 @@ class CheckOut {
 		System.out.println("Error!! Please enter either Yes or No to continue");
 	    }
 }
-    
+  for (CheckOut item : cartPerItems) {
+        item.cashierName = cashierName;
+        item.discountRate = discountRate;
+        shoppingCart.add(item);
+        } 
 }
 }
