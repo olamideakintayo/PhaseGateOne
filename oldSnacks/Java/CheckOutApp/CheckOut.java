@@ -67,7 +67,7 @@ class CheckOut {
         double newAmount = totalAmount - discountedAmount;
         double vat = newAmount * 0.075;
         double finalAmount = newAmount + vat;
-	    double balance = amountPaid - finalAmount;
+	    // double balance = amountPaid - finalAmount;
 	    
         System.out.println("\nSEMICOLON STORES");
         System.out.println("MAIN BRANCH");
@@ -86,8 +86,8 @@ class CheckOut {
         System.out.printf("VAT @ 7.5%%: %.2f%n", vat);
         System.out.println("======================================================================================");
         System.out.printf("Bill Total: %.2f%n", finalAmount);
-        System.out.printf("Amount Paid: %.2f%n", amountPaid);
-        System.out.printf("Balance: %.2f%n", balance);
+        // System.out.printf("Amount Paid: %.2f%n", amountPaid);
+       // System.out.printf("Balance: %.2f%n", balance);
         System.out.println("======================================================================================");
         System.out.println("THANK YOU FOR YOUR PATRONAGE");
         System.out.println("======================================================================================");
@@ -97,16 +97,17 @@ class CheckOut {
     public static void addToCart() {
     String customerName;
     
-    System.out.print("What is the customer's name: ");
+    System.out.println("What is the customer's name: ");
     customerName = input.nextLine().trim();
     
+    while(true) {
     String userBuy;
-    System.out.print("What did the user buy: ");
+    System.out.println("What did the user buy ?");
     userBuy = input.nextLine().trim();
     
     int itemPieces;
     while(true) {
-    System.out.print("How many pieces: ");
+    System.out.println("How many pieces ?");
     itemPieces = input.nextInt();
     if (itemPieces >= 1) {
     break;
@@ -115,5 +116,53 @@ class CheckOut {
     	System.out.println("Error!! Item pieces must be greater than 0.");
     	}
     	}
+    
+    int pricePerUnit;
+   while(true) {
+    System.out.println("How much per unit ?");
+    pricePerUnit = input.nextInt();
+    
+    if(pricePerUnit >= 100) {
+    break;
+    }  
+    else {
+    System.out.println("Error!! Price must be must equal to or greater than 100 naira");
+    }
+    }
+    
+    String cashierName;
+   
+   System.out.println("What is your name ?");
+   cashierName = input.nextLine().trim();
+   
+   double discountRate;
+   while(true) {
+   System.out.print("How much discount will he get?");
+   discountRate = input.nextDouble();
+   
+   if(discountRate >= 1) {
+   break;
+   }
+   else {
+   System.out.println("Error!! Discount must be at least 1% or more");
+   }
+   }
+   shoppingCart.add(new CheckOut(customerName, userBuy, itemPieces, pricePerUnit, cashierName, discountRate));   
+    
+    
+    while(true) {
+    System.out.println("Add more items ?");
+    String addMoreItems = input.nextLine().toLowerCase();
+    
+    if(addMoreItems == "yes" || addMoreItems == "no") {
+    break;
+    }
+    else {
+    System.out.println("Error!! Please Enter Either Yes or No to continue");
+    }
     }   
+    
+    }
+    }
+    
 }
