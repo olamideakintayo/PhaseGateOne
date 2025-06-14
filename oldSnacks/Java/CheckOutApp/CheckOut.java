@@ -91,5 +91,29 @@ class CheckOut {
         System.out.println("======================================================================================");
         System.out.println("THANK YOU FOR YOUR PATRONAGE");
         System.out.println("======================================================================================");
-    }    
+    } 
+    
+    
+    public static void addToCart() {
+    String customerName;
+    
+    System.out.print("What is the customer's name: ");
+    customerName = input.nextLine().trim();
+    
+    String userBuy;
+    System.out.print("What did the user buy: ");
+    userBuy = input.nextLine().trim();
+    
+    int itemPieces;
+    while(true) {
+    System.out.print("How many pieces: ");
+    itemPieces = input.nextInt();
+    if (itemPieces >= 1) {
+    break;
+    }
+    else {
+    	System.out.println("Error!! Item pieces must be greater than 0.");
+    	}
+    	}
+    }   
 }
