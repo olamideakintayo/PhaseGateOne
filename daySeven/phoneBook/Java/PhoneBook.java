@@ -196,16 +196,40 @@ while (true) {
 }
 
 
+public static void editContact() {
+    if (numbers.isEmpty()) {
+        System.out.println("No contacts found.\n");
+        return;
+    }
 
+    System.out.println("Please Enter the contact first name to update contact details: ");
+    String indexName = input.nextLine().trim();
+    
+    PhoneBook foundContact = null;
+    for (PhoneBook user : numbers) {
+        if (user.firstName.equalsIgnoreCase(indexName)) {
+            foundContact = user;
+            break;
+        }
+    }
+    
+    if (foundContact == null) {
+        System.out.println("Contact not found");
+        return;
+    }
 
+    System.out.println("Enter the new contact first name: ");
+    foundContact.firstName = input.nextLine();
+    
+    System.out.println("Enter the new contact last name: ");
+    foundContact.lastName = input.nextLine();
+    
+    System.out.println("Enter the new contact phone number: ");
+    foundContact.phoneNumber = input.nextInt();
+    input.nextLine(); 
 
-
-
-
-
-
-
-
+    System.out.println("The Contact has been updated successfully!!");
+}
 
 
 
