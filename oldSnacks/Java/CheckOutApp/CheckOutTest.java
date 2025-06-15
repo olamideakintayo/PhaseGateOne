@@ -61,5 +61,17 @@ public class CheckOutTest {
 
         assertEquals(0, total, 0.01);
     }
+    
+    @Test
+    public void testThatChecksForTheMinimumAllowedPrice() {
+        CheckOut item = new CheckOut("Rose", "Pen", 1, 100, "Cashier7", 0, 0);
+        CheckOut.shoppingCart.add(item);
+
+        double subTotal = 100;
+        double vat = subTotal * 0.075;
+        double total = subTotal + vat;
+
+        assertEquals(107.50, total, 0.01);
+    }
  
 }
