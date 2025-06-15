@@ -52,5 +52,14 @@ public class CheckOutTest {
         assertEquals(6020.00, total, 0.01);
     }
 
+	 @Test
+    public void testThatChecksIfNoItemIsAdded() {
+                double subTotal = 0;
+        double discount = 0;
+        double vat = 0;
+        double total = 0;
+
+        assertEquals(0, total, 0.01);
+    }
  
 }
