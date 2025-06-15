@@ -20,22 +20,64 @@ static Scanner input = new Scanner(System.in);
 
 
 		
-	public static void addContact() {
-	System.out.println("Please Enter First Name: ");
-	String firstName = input.nextLine();
-	
-	System.out.println("Please Enter Last Name: ");
-	String lastName = input.nextLine();
-	
-	System.out.println("Enter Phone Number: ");
-	int phoneNumber = input.nextInt();
-	
-	input.nextLine();
-	
-	PhoneBook contact = new PhoneBook(firstName, lastName, phoneNumber);
-	numbers.add(contact);
-	
-	System.out.println("Contact has been added successfully!\n");
+public static void addContact() {
+    String firstName;
+    String lastName;
+    int phoneNumber;
+
+    
+    while (true) {
+        System.out.print("Please Enter First Name: ");
+        firstName = input.nextLine().trim();
+
+        boolean duplicateFirstName = false;
+        for (PhoneBook user : numbers) {
+            if (user.firstName.equalsIgnoreCase(firstName)) {
+                System.out.println("Error: User with the first name '" + firstName + "' already exists. Please enter a different name.");
+                duplicateFirstName = true;
+                break;
+            }
+        }
+        if (!duplicateFirstName) break;
+    }
+
+
+    while (true) {
+        System.out.print("Please Enter Last Name: ");
+        lastName = input.nextLine().trim();
+
+        boolean duplicateLastName = false;
+        for (PhoneBook user : numbers) {
+            if (user.lastName.equalsIgnoreCase(lastName)) {
+                System.out.println("Error: User with the last name '" + lastName + "' already exists. Please enter a different name.");
+                duplicateLastName = true;
+                break;
+            }
+        }
+        if (!duplicateLastName) break;
+    }
+
+
+    while (true) {
+        System.out.print("Enter Phone Number: ");
+        phoneNumber = input.nextInt();
+        input.nextLine(); 
+        
+        boolean duplicatePhoneNumber = false;
+        for (PhoneBook user : numbers) {
+            if (user.phoneNumber == phoneNumber) {
+                System.out.println("Error: Phone number '" + phoneNumber + "' already exists. Please enter a different phone number.");
+                duplicatePhoneNumber = true;
+                break;
+            }
+        }
+        if (!duplicatePhoneNumber) break;
+    }
+
+  
+    PhoneBook contact = new PhoneBook(firstName, lastName, phoneNumber);
+    numbers.add(contact);
+    System.out.println("Contact has been added successfully!\n");
 }
 
 	public static void removeContact() {
@@ -86,9 +128,7 @@ static Scanner input = new Scanner(System.in);
     }
 }
 
-
-
-
+	
 
 
 
