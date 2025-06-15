@@ -81,9 +81,11 @@ public static void addContact() {
 }
 
 	public static void removeContact() {
+	while (true) {
 	System.out.print("Enter the phone number you want to remove: ");
 	int removePhoneNumber = input.nextInt();
 	
+	input.nextLine();
 	
 	boolean seenContact = false;
 	
@@ -94,11 +96,14 @@ public static void addContact() {
 		seenContact = true;
 		break;
 		}
+		
 	}
 	
 	if(!seenContact) {
 		System.out.println("Contact no Found!!");
 	}	
+	break;
+	}
 	}
 
 	public static void findContactByPhoneNumber() {
@@ -181,6 +186,7 @@ public static void findContactByLastName() {
 	}
 	
 }
+
 
 
 
