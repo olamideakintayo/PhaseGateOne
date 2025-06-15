@@ -10,8 +10,7 @@ static Scanner input = new Scanner(System.in);
 	String firstName;
 	String lastName;
 	int phoneNumber;
-}
-
+	
 	public PhoneBook(String firstName, String lastName, int phoneNumber) {
 	this.firstName = firstName;
 	this.lastName = lastName;
@@ -20,8 +19,24 @@ static Scanner input = new Scanner(System.in);
 
 
 
-
-
+		
+	public static void addContact() {
+	System.out.println("Please Enter First Name: ");
+	String firstName = input.nextLine();
+	
+	System.out.println("Please Enter Last Name: ");
+	String lastName = input.nextLine();
+	
+	System.out.println("Enter Phone Number: ");
+	int phoneNumber = input.nextInt();
+	
+	input.nextLine();
+	
+	PhoneBook contact = new PhoneBook(firstName, lastName, phoneNumber);
+	numbers.add(contact);
+	
+	System.out.println("Contact has been added successfully!\n");
+}
 
 
 
