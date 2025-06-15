@@ -231,37 +231,4 @@ public static void editContact() {
     System.out.println("The Contact has been updated successfully!!");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
