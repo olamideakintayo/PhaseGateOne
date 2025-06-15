@@ -107,6 +107,7 @@ public static void addContact() {
 	}
 
 	public static void findContactByPhoneNumber() {
+	while (true) {
     System.out.println("Enter Phone Number: ");
     int findPhoneNumber = input.nextInt();
     
@@ -131,6 +132,8 @@ public static void addContact() {
     if (!seenContact) {
         System.out.println("No contact found with phone number: " + findPhoneNumber);
     }
+break;
+}
 }
 
 	public static void findContactByFirstName() {
