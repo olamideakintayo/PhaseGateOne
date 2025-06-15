@@ -17,13 +17,14 @@ class CheckOut {
     double amountPaid;
     
     
-    public CheckOut(String customerName, String userBuy, int itemPieces, double pricePerUnit, String cashierName, double discountRate) {
+    public CheckOut(String customerName, String userBuy, int itemPieces, double pricePerUnit, String cashierName, double discountRate,  double amountPaid) {
         this.customerName = customerName;
         this.userBuy = userBuy;
         this.itemPieces = itemPieces;
         this.pricePerUnit = pricePerUnit;
         this.cashierName = cashierName;
         this.discountRate = discountRate;
+        this.amountPaid = 0;
     }
     
         
@@ -59,10 +60,18 @@ class CheckOut {
     System.out.printf("Bill Total: %.2f%n", finalAmount);
     System.out.println("THIS IS NOT A RECEIPT KINDLY PAY " + finalAmount);
     System.out.println("======================================================================================");
-
+	while (true) {
     System.out.print("How much did the customer give to you? ");
-    amountPaid = input.nextDouble();
-    input.nextLine();
+   double amount = input.nextDouble();
+   input.nextLine();
+    if (amount >= finalAmount) {
+    this.amountPaid = amount;
+    break;
+    }
+    else {
+    	System.out.println("Invalid Amount!! Amount paid can't be lesser than final amount.");
+    	}
+    }
 }
     
     
@@ -141,7 +150,7 @@ class CheckOut {
         input.nextLine(); 
 
    
-        cartPerItems.add(new CheckOut(customerName, userBuy, itemPieces, pricePerUnit, "", 0));
+        cartPerItems.add(new CheckOut(customerName, userBuy, itemPieces, pricePerUnit, "", 0, 0));
 
         System.out.println("Add more items?");
         String addMoreItems = input.nextLine().toLowerCase();
