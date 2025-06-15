@@ -137,6 +137,7 @@ break;
 }
 
 	public static void findContactByFirstName() {
+	while (true) {
 	System.out.println("Enter First Name: ");
 	String findFirstName = input.nextLine();
 	
@@ -160,7 +161,8 @@ break;
 	if (!seenFirstNameContact) {
 		System.out.println("No contact found with first name: " + findFirstName);
 	}
-	
+	break;
+	}
 }
 
 public static void findContactByLastName() {
