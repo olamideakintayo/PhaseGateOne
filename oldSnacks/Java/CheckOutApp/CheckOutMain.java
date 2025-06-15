@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class MainApp {
+public class CheckOutMain {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
