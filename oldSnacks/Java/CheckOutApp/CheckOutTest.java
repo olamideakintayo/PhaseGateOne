@@ -37,6 +37,20 @@ public class CheckOutTest {
 
         assertEquals(537.5, total, 0.01);
     }
+    
+    
+     @Test
+    public void testThatChecksForMultipleItemsWithDifferentQuantities() {
+        CheckOut.shoppingCart.add(new CheckOut("Marvy", "Shoes", 3, 1500, "Domi", 20, 0));
+        CheckOut.shoppingCart.add(new CheckOut("Marvy", "Beans", 5, 500, "Domi", 20, 0));
+
+        double subTotal = (3 * 1500) + (5 * 500);
+        double discount = subTotal * 0.20;
+        double vat = (subTotal - discount) * 0.075;
+        double total = subTotal - discount + vat;
+
+        assertEquals(6020.00, total, 0.01);
+    }
 
  
 }
