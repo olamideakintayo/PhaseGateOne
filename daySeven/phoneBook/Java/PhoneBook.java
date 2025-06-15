@@ -128,7 +128,32 @@ public static void addContact() {
     }
 }
 
+	public static void findContactByFirstName() {
+	System.out.println("Enter First Name: ");
+	String findFirstName = input.nextLine();
 	
+	if (numbers.isEmpty()) {
+        System.out.println("No contacts found.\n");
+        return;
+    }
+	
+	boolean seenFirstNameContact = false; 
+	
+	for (PhoneBook contact : numbers) {
+		if (contact.firstName == findFirstName) {
+		System.out.println("Contact found:");
+		System.out.println("Name: " + contact.firstName + " " + contact.lastName);
+		System.out.println("Phone Number: " + contact.phoneNumber);
+		seenFirstNameContact = true;
+		System.out.println();
+		break;
+	}
+	}
+	if (!seenFirstNameContact) {
+		System.out.println("No contact found with first name: " + findFirstName);
+	}
+	
+}
 
 
 
