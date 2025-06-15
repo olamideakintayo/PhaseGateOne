@@ -8,6 +8,7 @@ public static void main(String[] args) {
 int userInput;
 
 	do {
+	 System.out.println("\n===================================================");
 		System.out.println("\n Welcome to PhoneBook");
 		System.out.println("1. Add Contact");
 		System.out.println("2. Remove Contact");
@@ -16,6 +17,8 @@ int userInput;
 		System.out.println("5. Find contact by last name");
 		System.out.println("6. Edit contact");
 		System.out.println("7. Exit");
+		 System.out.println("=================================================");
+
 		userInput = input.nextInt();
 		input.nextLine();
 		
