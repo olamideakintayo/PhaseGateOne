@@ -110,9 +110,11 @@ public class PhoneBook {
 
         for (PhoneBook contact : numbers) {
             if (contact.phoneNumber.equals(findPhoneNumber)) {
+            System.out.println("\n===================================================");
                 System.out.println("Contact found:");
                 System.out.println("Name: " + contact.firstName + " " + contact.lastName);
                 System.out.println("Phone Number: " + contact.phoneNumber);
+                System.out.println("===================================================");
                 seenContact = true;
                 System.out.println();
                 break;
@@ -137,9 +139,11 @@ public class PhoneBook {
 
         for (PhoneBook contact : numbers) {
             if (contact.firstName.equalsIgnoreCase(findFirstName)) {
+            System.out.println("\n===================================================");
                 System.out.println("Contact found:");
                 System.out.println("Name: " + contact.firstName + " " + contact.lastName);
                 System.out.println("Phone Number: " + contact.phoneNumber);
+                System.out.println("===================================================");
                 seenFirstNameContact = true;
                 System.out.println();
                 break;
@@ -164,9 +168,11 @@ public class PhoneBook {
 
         for (PhoneBook contact : numbers) {
             if (contact.lastName.equalsIgnoreCase(findLastName)) {
+            System.out.println("\n===================================================");
                 System.out.println("Contact found:");
                 System.out.println("Name: " + contact.firstName + " " + contact.lastName);
                 System.out.println("Phone Number: " + contact.phoneNumber);
+                System.out.println("===================================================");
                 seenLastNameContact = true;
                 System.out.println();
                 break;
