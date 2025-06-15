@@ -73,5 +73,22 @@ public class CheckOutTest {
 
         assertEquals(107.50, total, 0.01);
     }
+    
+    @Test
+public void testThatCheckIfTheAmountPaidIsLowerThanTheTotalPrice() {
+    
+    CheckOut.shoppingCart.clear();
+    CheckOut.shoppingCart.add(new CheckOut("David", "Laptop", 1, 2000, "Cashier10", 10, 0));
+
+    double subTotal = 2000;
+    double discount = subTotal * 0.10; // 10% discount
+    double newAmount = subTotal - discount;
+    double vat = newAmount * 0.075;
+    double finalAmount = newAmount + vat;
+       double amountPaid = finalAmount - 1000;
+
+      assertTrue(amountPaid < finalAmount);
+}
+
  
 }
