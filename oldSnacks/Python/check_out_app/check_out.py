@@ -33,8 +33,14 @@ def show_invoice(customer_name, cashier_name, discount_rate):
     print("Bill Total: {:.2f}".format(final_amount))
     print("THIS IS NOT A RECEIPT KINDLY PAY {:.2f}".format(final_amount))
     print("="*90)
-
-    amount_paid = float(input("How much did the customer give to you? "))
+    
+    while True:
+        amount_paid = float(input("How much did the customer give to you? "))
+        if amount_paid >= final_amount:
+            break
+        else:
+            print("Invalid amount!! Amount paid can't be lesser than final amount.")
+    
     return amount_paid, final_amount
 
 
