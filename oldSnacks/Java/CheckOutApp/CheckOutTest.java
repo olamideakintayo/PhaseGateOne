@@ -26,6 +26,17 @@ public class CheckOutTest {
         assertEquals(107.5, expectedTotal, 0.01);
     }
 
+	 @Test
+    public void testThatChecksForMultipleItemsWithNoDiscount() {
+        CheckOut.shoppingCart.add(new CheckOut("BOJ", "Milk", 2, 150, "olamide", 0, 0));
+        CheckOut.shoppingCart.add(new CheckOut("BOJ", "Eggs", 1, 200, "mide", 0, 0));
 
+        double subTotal = (2 * 150) + (1 * 200); 
+                double vat = subTotal * 0.075;
+        double total = subTotal + vat;
 
+        assertEquals(537.5, total, 0.01);
+    }
+
+ 
 }
