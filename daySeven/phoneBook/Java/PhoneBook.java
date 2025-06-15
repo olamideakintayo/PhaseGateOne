@@ -59,11 +59,32 @@ static Scanner input = new Scanner(System.in);
 	}	
 	}
 
-
-
-
-
-
+	public static void findContactByPhoneNumber() {
+    System.out.println("Enter Phone Number: ");
+    int findPhoneNumber = input.nextInt();
+    
+    if (numbers.isEmpty()) {
+        System.out.println("No contacts found.\n");
+        return;
+    }
+    
+    boolean seenContact = false;
+    
+    for (PhoneBook contact : numbers) {
+        if (contact.phoneNumber == findPhoneNumber) {
+            System.out.println("Contact found:");
+            System.out.println("Name: " + contact.firstName + " " + contact.lastName);
+            System.out.println("Phone Number: " + contact.phoneNumber);
+            seenContact = true;
+            System.out.println();
+            break;  
+                    }
+    }
+    
+    if (!seenContact) {
+        System.out.println("No contact found with phone number: " + findPhoneNumber);
+    }
+}
 
 
 
