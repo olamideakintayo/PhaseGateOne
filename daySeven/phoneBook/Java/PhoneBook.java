@@ -38,7 +38,26 @@ static Scanner input = new Scanner(System.in);
 	System.out.println("Contact has been added successfully!\n");
 }
 
-
+	public static void removeContact() {
+	System.out.print("Enter the phone number you want to remove: ");
+	int removePhoneNumber = input.nextInt();
+	
+	
+	boolean seenContact = false;
+	
+	for (int i = 0; i < numbers.size(); i++) {
+		if (numbers.get(i).phoneNumber == removePhoneNumber) {
+		numbers.remove(i);
+		System.out.println("Contact has been removed successfully.");
+		seenContact = true;
+		break;
+		}
+	}
+	
+	if(!seenContact) {
+		System.out.println("Contact no Found!!");
+	}	
+	}
 
 
 
