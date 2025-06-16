@@ -18,5 +18,14 @@ public class PhoneBookTest {
         PhoneBook.numbers.add(contact);
         assertEquals(1, PhoneBook.numbers.size());
     }
+    
+    @Test
+    public void testThatAddsMultipleContacts() {
+        PhoneBook contact1 = new PhoneBook("Olamide", "Akintayo", "09032592825");
+        PhoneBook contact2 = new PhoneBook("Dominion", "Akintayo", "08033149859");
+        PhoneBook.numbers.add(contact1);
+        PhoneBook.numbers.add(contact2);
+        assertEquals(2, PhoneBook.numbers.size());
+    }
   
   }
