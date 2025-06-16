@@ -133,5 +133,10 @@ public class PhoneBookTest {
         assertNotNull(foundContact);
         assertEquals("Olamide", foundContact.firstName);
     }
+    
+     @Test
+    public void testThatCheckIfTheListIsEmptyInitially() {
+        assertEquals(0, PhoneBook.numbers.size());
+    }
   
   }
