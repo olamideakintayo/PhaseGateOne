@@ -116,5 +116,22 @@ public class PhoneBookTest {
          assertNotNull(foundContact);
         assertEquals("Akintayo", foundContact.lastName);
     }
+    
+     @Test
+    public void testThatFindsAContactByPhoneNumber() {
+        PhoneBook contact = new PhoneBook("Olamide", "Akintayo", "09032592825");
+        PhoneBook.numbers.add(contact);
+
+        PhoneBook foundContact = null;
+        for (PhoneBook contactItem : PhoneBook.numbers) {
+            if (contactItem.phoneNumber.equals("09032592825")) {
+                foundContact = contactItem;
+                break;
+            }
+        }
+
+        assertNotNull(foundContact);
+        assertEquals("Olamide", foundContact.firstName);
+    }
   
   }
