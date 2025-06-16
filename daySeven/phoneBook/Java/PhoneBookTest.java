@@ -69,5 +69,20 @@ public class PhoneBookTest {
         }
         assertTrue(found);
     }
+    
+    @Test
+    public void testThatRemovesContactByPhoneNumber() {
+        PhoneBook contact = new PhoneBook("Dominion", "Akintayo", "08033149859");
+        PhoneBook.numbers.add(contact);
+
+        for (int i = 0; i < PhoneBook.numbers.size(); i++) {
+            if (PhoneBook.numbers.get(i).phoneNumber.equals("08033149859")) {
+                PhoneBook.numbers.remove(i);
+                break;
+            }
+        }
+
+        assertEquals(0, PhoneBook.numbers.size());
+    }
   
   }
