@@ -84,5 +84,20 @@ public class PhoneBookTest {
 
         assertEquals(0, PhoneBook.numbers.size());
     }
+    
+     @Test
+    public void testThatRemovesNonExistingContact() {
+        PhoneBook contact = new PhoneBook("Ella", "Akintayo", "08141511541");
+        PhoneBook.numbers.add(contact);
+
+        for (int i = 0; i < PhoneBook.numbers.size(); i++) {
+            if (PhoneBook.numbers.get(i).phoneNumber.equals("00000000000")) {
+                PhoneBook.numbers.remove(i);
+                break;
+            }
+        }
+
+        assertEquals(1, PhoneBook.numbers.size());
+    }
   
   }
