@@ -27,5 +27,20 @@ public class PhoneBookTest {
         PhoneBook.numbers.add(contact2);
         assertEquals(2, PhoneBook.numbers.size());
     }
+    
+    @Test
+    public void testThatChecksIfFirstNameExists() {
+        PhoneBook contact = new PhoneBook("Ella", "Akintayo", "08141511541");
+        PhoneBook.numbers.add(contact);
+        boolean found = false;
+        for (PhoneBook contactItem : PhoneBook.numbers) {
+            if (contactItem.firstName.equalsIgnoreCase("Ella")) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue(found);
+    }
+
   
   }
