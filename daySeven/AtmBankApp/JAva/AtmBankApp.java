@@ -5,14 +5,14 @@ public class AtmBankApp {
     private static class Account {
         String firstName;
         String lastName;
-        String phone;
+        String phoneNumber;
         String pin;
         double balance;
 
         Account(String firstName, String lastName, String phone, String pin, double balance) {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.phone = phone;
+            this.phoneNumber = phoneNumber;
             this.pin = pin;
             this.balance = balance;
         }
@@ -115,10 +115,10 @@ public class AtmBankApp {
         throw new IllegalArgumentException("Account with this phone number not found.");
     }
 
-    public static String transfer(String fromPhone, String fromPin, String toPhone, String amountStr) {
+    public static String transfer(String fromPhoneNumber, String fromPin, String toPhoneNumber, String amountSend) {
         double amount;
         try {
-            amount = Double.parseDouble(amountStr);
+            amount = Double.parseDouble(amountSend);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Transfer amount must be a valid number.");
         }
@@ -130,10 +130,10 @@ public class AtmBankApp {
         Account toAccount = null;
 
         for (Account account : accounts) {
-            if (account.phone.equals(fromPhone)) {
+            if (account.phone.equals(fromPhoneNumber)) {
                 fromAccount = account;
             }
-            if (account.phone.equals(toPhone)) {
+            if (account.phone.equals(toPhoneNumber)) {
                 toAccount = account;
             }
         }
