@@ -55,5 +55,19 @@ public class PhoneBookTest {
         }
         assertTrue(found);
     }
+    
+     @Test
+    public void testThatChecksIfPhoneNumberExists() {
+        PhoneBook contact = new PhoneBook("Olamide", "Akintayo", "09032592825");
+        PhoneBook.numbers.add(contact);
+        boolean found = false;
+        for (PhoneBook contactItem : PhoneBook.numbers) {
+            if (contactItem.phoneNumber.equals("09032592825")) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue(found);
+    }
   
   }
