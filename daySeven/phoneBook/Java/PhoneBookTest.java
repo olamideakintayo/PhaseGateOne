@@ -99,5 +99,18 @@ public class PhoneBookTest {
 
         assertEquals(1, PhoneBook.numbers.size());
     }
+    
+     @Test
+    public void testThatFindsAContactByFirstName() {
+        PhoneBook contact = new PhoneBook("Ella", "Akintayo", "08141511541");
+        PhoneBook.numbers.add(contact);
+
+        PhoneBook foundContact = null;
+        for (PhoneBook contactItem : PhoneBook.numbers) {
+            if (contactItem.firstName.equalsIgnoreCase("Ella")) {
+                foundContact = contactItem;
+                break;
+            }
+        }
   
   }
