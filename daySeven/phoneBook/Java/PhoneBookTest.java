@@ -112,5 +112,9 @@ public class PhoneBookTest {
                 break;
             }
         }
+        
+         assertNotNull(foundContact);
+        assertEquals("Akintayo", foundContact.lastName);
+    }
   
   }
