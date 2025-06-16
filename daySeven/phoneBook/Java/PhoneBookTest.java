@@ -42,5 +42,18 @@ public class PhoneBookTest {
         assertTrue(found);
     }
 
+	@Test
+    public void testThatChecksIfLastNameExists() {
+        PhoneBook contact = new PhoneBook("Dominion", "Akintayo", "08033149859");
+        PhoneBook.numbers.add(contact);
+        boolean found = false;
+        for (PhoneBook contactItem : PhoneBook.numbers) {
+            if (contactItem.lastName.equalsIgnoreCase("Akintayo")) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue(found);
+    }
   
   }
