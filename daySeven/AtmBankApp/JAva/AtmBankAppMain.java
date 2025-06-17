@@ -6,7 +6,7 @@ public class Main {
         String selectedOption;
 
         do {
-            System.out.println("\n=== ATM BANK APP ===");
+            System.out.println("=========================");
             System.out.println("1. Create Account");
             System.out.println("2. Close Account");
             System.out.println("3. Deposit");
@@ -15,43 +15,44 @@ public class Main {
             System.out.println("6. Transfer");
             System.out.println("7. Change Pin");
             System.out.println("8. Exit");
+            System.out.println("=========================");
             System.out.print("Choose an option: ");
-            selectedOption = scanner.nextLine();
+            selectedOption = scanner.nextLine().trim();
 
             try {
                 switch (selectedOption) {
                     case "1":
                         System.out.print("Enter First Name: ");
-                        String firstName = scanner.nextLine();
+                        String firstName = scanner.nextLine().trim();
 
                         System.out.print("Enter Last Name: ");
-                        String lastName = scanner.nextLine();
+                        String lastName = scanner.nextLine().trim();
 
                         System.out.print("Enter Phone Number: ");
-                        String phoneNumber = scanner.nextLine();
+                        String phoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter 4-digit PIN: ");
-                        String pin = scanner.nextLine();
+                        String pin = scanner.nextLine().trim();
 
                         System.out.println(AtmBankApp.createAccount(firstName, lastName, phoneNumber, pin));
                         break;
 
                     case "2":
                         System.out.print("Enter Phone Number: ");
-                        String closePhoneNumber = scanner.nextLine();
+                        String closePhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter PIN: ");
-                        String closePin = scanner.nextLine();
+                        String closePin = scanner.nextLine().trim();
 
                         System.out.println(AtmBankApp.closeAccount(closePhoneNumber, closePin));
                         break;
 
                     case "3":
                         System.out.print("Enter Phone Number: ");
-                        String depositPhoneNumber = scanner.nextLine();
+                        String depositPhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter Amount to Deposit: ");
-                        String depositAmount = scanner.nextLine();
+                        String depositAmount = scanner.nextLine().trim();
 
                         double updatedBalance = AtmBankApp.deposit(depositPhoneNumber, depositAmount);
                         System.out.println("Deposit successful. New Balance: " + updatedBalance);
@@ -59,13 +60,13 @@ public class Main {
 
                     case "4":
                         System.out.print("Enter Phone Number: ");
-                        String withdrawPhoneNumber = scanner.nextLine();
+                        String withdrawPhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter PIN: ");
-                        String withdrawPin = scanner.nextLine();
+                        String withdrawPin = scanner.nextLine().trim();
 
                         System.out.print("Enter Amount to Withdraw: ");
-                        String withdrawAmount = scanner.nextLine();
+                        String withdrawAmount = scanner.nextLine().trim();
 
                         double remainingBalance = AtmBankApp.withdraw(withdrawPhoneNumber, withdrawPin, withdrawAmount);
                         System.out.println("Withdrawal successful. Remaining Balance: " + remainingBalance);
@@ -73,10 +74,10 @@ public class Main {
 
                     case "5":
                         System.out.print("Enter Phone Number: ");
-                        String balancePhoneNumber = scanner.nextLine();
+                        String balancePhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter PIN: ");
-                        String balancePin = scanner.nextLine();
+                        String balancePin = scanner.nextLine().trim();
 
                         double accountBalance = AtmBankApp.checkBalance(balancePhoneNumber, balancePin);
                         System.out.println("Current Balance: " + accountBalance);
@@ -84,29 +85,29 @@ public class Main {
 
                     case "6":
                         System.out.print("Enter Sender Phone Number: ");
-                        String senderPhoneNumber = scanner.nextLine();
+                        String senderPhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter Sender PIN: ");
-                        String senderPin = scanner.nextLine();
+                        String senderPin = scanner.nextLine().trim();
 
                         System.out.print("Enter Receiver Phone Number: ");
-                        String receiverPhoneNumber = scanner.nextLine();
+                        String receiverPhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter Amount to Transfer: ");
-                        String transferAmount = scanner.nextLine();
+                        String transferAmount = scanner.nextLine().trim();
 
                         System.out.println(AtmBankApp.transfer(senderPhoneNumber, senderPin, receiverPhoneNumber, transferAmount));
                         break;
 
                     case "7":
                         System.out.print("Enter Phone Number: ");
-                        String changePinPhoneNumber = scanner.nextLine();
+                        String changePinPhoneNumber = scanner.nextLine().trim();
 
                         System.out.print("Enter Old PIN: ");
-                        String oldPin = scanner.nextLine();
+                        String oldPin = scanner.nextLine().trim();
 
                         System.out.print("Enter New PIN: ");
-                        String newPin = scanner.nextLine();
+                        String newPin = scanner.nextLine().trim();
 
                         System.out.println(AtmBankApp.changePin(changePinPhoneNumber, oldPin, newPin));
                         break;
@@ -124,6 +125,5 @@ public class Main {
             }
 
         } while (!selectedOption.equals("8"));
-
     }
 }
