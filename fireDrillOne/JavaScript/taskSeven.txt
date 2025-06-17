@@ -1,0 +1,15 @@
+// taskSeven.js
+
+for (i = 1; i <= 10; i++) {
+            if (i % 4 == 0) {
+                multipleResult = i;
+                for (j = 0; j < 5; j++) {
+                   
+                    multipleResult = multipleResult * i;
+                    sum = sum + multipleResult;
+                     console.log(sum + " ");
+                }
+                }
+                }
+
+
