@@ -20,31 +20,31 @@ public class AtmBankApp {
 
     private static List<Account> accounts = new ArrayList<>();
 
-    public static String createAccount(String firstName, String lastName, String phone, String pin) {
+    public static String createAccount(String firstName, String lastName, String phoneNumber, String pin) {
         if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty()) {
             throw new IllegalArgumentException("First name and last name cannot be empty.");
         }
-        if (!phone.matches("\\d+")) {
-            throw new IllegalArgumentException("Phone must contain digits only.");
+        if (!phoneNumber.matches("\\d+")) {
+            throw new IllegalArgumentException("Phone number must contain digits only.");
         }
         if (pin.length() != 4 || !pin.matches("\\d+")) {
             throw new IllegalArgumentException("Pin must be 4 digits.");
         }
 
         for (Account acc : accounts) {
-            if (acc.phone.equals(phone)) {
+            if (acc.phoneNumber.equals(phoneNumber)) {
                 throw new IllegalArgumentException("Account with this phone number already exists.");
             }
         }
 
-        Account account = new Account(firstName, lastName, phone, pin, 0.0);
+        Account account = new Account(firstName, lastName, phoneNumber, pin, 0.0);
         accounts.add(account);
         return "Account created successfully.";
     }
 
-    public static String closeAccount(String phone, String pin) {
+    public static String closeAccount(String phoneNumber, String pin) {
         for (Account account : accounts) {
-            if (account.phone.equals(phone)) {
+            if (account.phoneNumber.equals(phoneNumber)) {
                 if (!account.pin.equals(pin)) {
                     throw new IllegalArgumentException("Invalid pin.");
                 }
@@ -55,10 +55,10 @@ public class AtmBankApp {
         throw new IllegalArgumentException("Account with this phone number not found.");
     }
 
-    public static double deposit(String phone, String amountStr) {
+    public static double deposit(String phoneNumber, String depositAmount) {
         double amount;
         try {
-            amount = Double.parseDouble(amountStr);
+            amount = Double.parseDouble(depositAmount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Deposit amount must be a valid number.");
         }
@@ -67,7 +67,7 @@ public class AtmBankApp {
         }
 
         for (Account account : accounts) {
-            if (account.phone.equals(phone)) {
+            if (account.phoneNumber.equals(phoneNumber)) {
                 account.balance += amount;
                 return account.balance;
             }
@@ -76,10 +76,10 @@ public class AtmBankApp {
         throw new IllegalArgumentException("Account with this phone number not found.");
     }
 
-    public static double withdraw(String phone, String pin, String amountStr) {
+    public static double withdraw(String phoneNumber, String pin, String withdrawalAmount) {
         double amount;
         try {
-            amount = Double.parseDouble(amountStr);
+            amount = Double.parseDouble(withdrawalAmount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Withdrawal amount must be a valid number.");
         }
@@ -88,10 +88,9 @@ public class AtmBankApp {
         }
 
         for (Account account : accounts) {
-            if (account.phone.equals(phone)) {
+            if (account.phoneNumber.equals(phoneNumber)) {
                 if (!account.pin.equals(pin)) {
-                    throw new IllegalArgumentException("Invalid pin.");
-                }
+                    throw new IllegalArgumentException("Invalid pin.");                }
                 if (account.balance < amount) {
                     throw new IllegalArgumentException("Insufficient funds.");
                 }
@@ -103,9 +102,9 @@ public class AtmBankApp {
         throw new IllegalArgumentException("Account with this phone number not found.");
     }
 
-    public static double checkBalance(String phone, String pin) {
+    public static double checkBalance(String phoneNumber, String pin) {
         for (Account account : accounts) {
-            if (account.phone.equals(phone)) {
+            if (account.phoneNumber.equals(phoneNumber)) {
                 if (!account.pin.equals(pin)) {
                     throw new IllegalArgumentException("Invalid pin.");
                 }
@@ -130,10 +129,10 @@ public class AtmBankApp {
         Account toAccount = null;
 
         for (Account account : accounts) {
-            if (account.phone.equals(fromPhoneNumber)) {
+            if (account.phoneNumber.equals(fromPhoneNumber)) {
                 fromAccount = account;
             }
-            if (account.phone.equals(toPhoneNumber)) {
+            if (account.phoneNumber.equals(toPhoneNumber)) {
                 toAccount = account;
             }
         }
@@ -155,9 +154,9 @@ public class AtmBankApp {
         return "Transfer successful.";
     }
 
-    public static String changePin(String phone, String oldPin, String newPin) {
+    public static String changePin(String phoneNumber, String oldPin, String newPin) {
         for (Account account : accounts) {
-            if (account.phone.equals(phone)) {
+            if (account.phoneNumber.equals(phoneNumber)) {
                 if (!account.pin.equals(oldPin)) {
                     throw new IllegalArgumentException("Old pin is incorrect.");
                 }
